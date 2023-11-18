@@ -28,7 +28,7 @@ async function main() {
 
   const topTen = wordCountArray.slice(0, 10);
 
-  await fs.writeFile("top-ten.json", JSON.stringify(topTen));
+  await fs.writeFile("top-ten.json", JSON.stringify(topTen, null, 2));
 }
 
 main()
