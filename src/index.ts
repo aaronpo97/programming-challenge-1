@@ -1,7 +1,10 @@
 import * as fs from "fs/promises";
 
 async function main() {
-  const text = await fs.readFile("frankenstein.txt", "utf-8");
+  const response = await fetch(
+    "https://www.gutenberg.org/cache/epub/84/pg84.txt"
+  );
+  const text = await response.text();
 
   const words = text
     // Convert to lowercase
@@ -18,18 +21,14 @@ async function main() {
   const wordCounts: { [key: string]: number } = {};
 
   words.forEach((word) => {
-    if (wordCounts[word]) {
-      wordCounts[word] += 1;
-    } else {
-      wordCounts[word] = 1;
-    }
+    wordCounts[word] = (wordCounts[word] || 0) + 1;
   });
 
   const wordCountArray = Object.entries(wordCounts).sort((a, b) => b[1] - a[1]);
 
   const topTen = wordCountArray.slice(0, 10);
 
-  fs.writeFile("top-ten.json", JSON.stringify(topTen, null, 2));
+  await fs.writeFile("top-ten.json", JSON.stringify(topTen));
 }
 
 main()
