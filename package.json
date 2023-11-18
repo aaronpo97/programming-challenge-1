@@ -1,0 +1,17 @@
+{
+  "name": "programming-challenge-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "5.2.2",
+    "ts-node": "10.9.1",
+    "@types/node": "^20.9.1"
+  }
+}
