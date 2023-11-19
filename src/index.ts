@@ -1,4 +1,5 @@
-import * as fs from "fs/promises";
+import process from "process";
+import fs from "fs/promises";
 
 async function main() {
   const response = await fetch(
@@ -37,4 +38,5 @@ main()
   })
   .catch((err) => {
     console.error(err);
+    process.exit(1);
   });
